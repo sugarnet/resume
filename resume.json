@@ -2,10 +2,10 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Diego David Scifo",
-    "label": "Ingeniero en Sistemas de Información · Java / Angular Developer · Trader Algorítmico",
+    "label": "Ingeniero en Sistemas de Información · Java / Angular Developer",
     "email": "diegoscifo@yahoo.com.ar",
     "phone": "+54 263 154571423",
-    "summary": "Ingeniero en Sistemas con más de 15 años de experiencia en desarrollo de software, liderazgo de proyectos y análisis funcional. Actualmente enfocado en migración de sistemas legacy (PHP) a Java/Angular y en el desarrollo de sistemas de trading algorítmico (MQL5, Pine Script, Java).",
+    "summary": "Ingeniero en Sistemas con más de 15 años de experiencia en desarrollo de software, liderazgo de proyectos y análisis funcional. Actualmente enfocado en migración de sistemas legacy (PHP) a Java/Angular.",
     "location": {
       "city": "Maipú",
       "region": "Mendoza",
@@ -70,10 +70,6 @@
     {
       "name": "Frontend",
       "keywords": ["Angular", "TypeScript", "HTML", "CSS", "Bootstrap", "JavaScript"]
-    },
-    {
-      "name": "Trading algorítmico",
-      "keywords": ["MQL5 (MetaTrader 5)", "Pine Script (TradingView)", "Java (Binance API)", "Smart Money Concepts / ICT"]
     },
     {
       "name": "Bases de datos",
