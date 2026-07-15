@@ -1,0 +1,122 @@
+{
+  "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
+  "basics": {
+    "name": "Diego David Scifo",
+    "label": "Ingeniero en Sistemas de Información · Java / Angular Developer · Trader Algorítmico",
+    "email": "diegoscifo@yahoo.com.ar",
+    "phone": "+54 263 154571423",
+    "summary": "Ingeniero en Sistemas con más de 15 años de experiencia en desarrollo de software, liderazgo de proyectos y análisis funcional. Actualmente enfocado en migración de sistemas legacy (PHP) a Java/Angular y en el desarrollo de sistemas de trading algorítmico (MQL5, Pine Script, Java).",
+    "location": {
+      "city": "Maipú",
+      "region": "Mendoza",
+      "countryCode": "AR"
+    },
+    "profiles": [
+      {
+        "network": "LinkedIn",
+        "username": "diego-scifo",
+        "url": "https://ar.linkedin.com/in/diego-scifo-94953526"
+      },
+      {
+        "network": "GitHub",
+        "username": "sugarnet",
+        "url": "https://github.com/sugarnet"
+      }
+    ]
+  },
+  "work": [
+    {
+      "name": "Aconcagua Software Factory",
+      "url": "http://www.aconcaguasf.com",
+      "position": "Java / Angular Developer",
+      "startDate": "2010-03",
+      "summary": "Distintos roles a lo largo de los años: desarrollo, QA, análisis funcional y liderazgo de proyectos.",
+      "highlights": [
+        "Proyecto para una red de cajeros automáticos (2019) — Java 8, Spring, JHipster, SQL Server",
+        "Proyecto de BI para empresa de Chile (2017) — Java 8, Spring, Hibernate, JPA, Redis, MySQL",
+        "Líder de Proyectos: Cargas Compartidas (transporte, Mendoza), plataforma e-learning de inglés (cliente de España), digitalización documental (2017)",
+        "Líder de Proyectos: Encuesta de Precios de Insumos de la Construcción — Dirección de Estadísticas e Investigaciones Económicas, Gobierno de Mendoza",
+        "Compañía petrolera: Sistema de Gestión de Oportunidades y Control de Gestión de Operaciones (desde 2015)",
+        "Analista Funcional SSr en compañía petrolera (desde 2013); QA con automatización de pruebas en HP QTP (2013)",
+        "Maintenance Project Leader (2012) y Programmer/Tester (2011-2012) en compañía petrolera — PHP, Javascript, Oracle",
+        "Programmer/Tester: Observatorio de Turismo Enológico (Bodegas de Argentina), Huentala Cooperativa de Trabajo — PHP, Javascript, MySQL",
+        "Programmer: Construpages — PHP, jQuery, Zend Framework, MySQL"
+      ]
+    },
+    {
+      "name": "Sommet",
+      "url": "http://www.sommet.com.ar",
+      "position": "Desarrollador Web",
+      "startDate": "2008",
+      "endDate": "2009",
+      "highlights": [
+        "Desarrollo de aplicaciones web en PHP"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "institution": "Universidad Tecnológica Nacional — Facultad Regional Mendoza",
+      "area": "Ingeniería en Sistemas de Información",
+      "studyType": "Ingeniero",
+      "endDate": "2009-12"
+    }
+  ],
+  "skills": [
+    {
+      "name": "Backend",
+      "keywords": ["Java", "Spring Boot", "JPA", "Hibernate", "PHP", "Zend"]
+    },
+    {
+      "name": "Frontend",
+      "keywords": ["Angular", "TypeScript", "HTML", "CSS", "Bootstrap", "JavaScript"]
+    },
+    {
+      "name": "Trading algorítmico",
+      "keywords": ["MQL5 (MetaTrader 5)", "Pine Script (TradingView)", "Java (Binance API)", "Smart Money Concepts / ICT"]
+    },
+    {
+      "name": "Bases de datos",
+      "keywords": ["MySQL", "Oracle", "SQL Server", "Redis"]
+    },
+    {
+      "name": "Análisis y diseño",
+      "keywords": ["UML", "Enterprise Architect", "Patrones GoF", "Scrum"]
+    },
+    {
+      "name": "Otros",
+      "keywords": ["Linux (nivel medio)", "Android (proyectos personales)"]
+    }
+  ],
+  "languages": [
+    {
+      "language": "Español",
+      "fluency": "Nativo"
+    },
+    {
+      "language": "Inglés",
+      "fluency": "Intermedio (Callan Method nivel 8)"
+    }
+  ],
+  "certificates": [
+    { "date": "2018", "name": "Patrones de diseño de software y principios SOLID", "issuer": "Udemy" },
+    { "date": "2017", "name": "Desarrollo Web con Spring 4.3", "issuer": "Udemy" },
+    { "date": "2017", "name": "Desarrollo de Aplicaciones con Angular", "issuer": "Udemy" },
+    { "date": "2017", "name": "Bootstrap 4", "issuer": "Udemy" },
+    { "date": "2017", "name": "Introduction to Cybersecurity", "issuer": "Cisco Networking Academy" },
+    { "date": "2016", "name": "Introduction to the Internet of Everything", "issuer": "Cisco Networking Academy" },
+    { "date": "2015", "name": "Gestión de Proyectos con Scrum", "issuer": "Aconcagua Software Factory" },
+    { "date": "2012", "name": "CMMI for Development v1.3", "issuer": "Solus Ingeniería de Software" },
+    { "date": "2010", "name": "ABAP Fundamentals y Workbench (TAW10 / TAW12)", "issuer": "Aconcagua Software Factory" },
+    { "date": "2008", "name": "Desarrollo Web con PHP y MySQL (30 hs)", "issuer": "UTN FRM" }
+  ],
+  "projects": [],
+  "volunteer": [
+    {
+      "organization": "Red de Informática Comunitaria — Gobierno de la Provincia de Mendoza",
+      "position": "Instructor",
+      "startDate": "2006",
+      "summary": "Cursos gratuitos de manejo de PC para la comunidad."
+    }
+  ]
+}
