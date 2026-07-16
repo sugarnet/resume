@@ -26,10 +26,17 @@
   },
   "work": [
     {
+      "name": "GlobalLogic Latinoamérica",
+      "position": "Java / Angular Developer",
+      "startDate": "2019-12",
+      "highlights": []
+    },
+    {
       "name": "Aconcagua Software Factory",
       "url": "http://www.aconcaguasf.com",
       "position": "Java / Angular Developer",
       "startDate": "2010-03",
+      "endDate": "2019-12-13",
       "summary": "Distintos roles a lo largo de los años: desarrollo, QA, análisis funcional y liderazgo de proyectos.",
       "highlights": [
         "Proyecto para una red de cajeros automáticos (2019) — Java 8, Spring, JHipster, SQL Server",
@@ -112,6 +119,7 @@
       "organization": "Red de Informática Comunitaria — Gobierno de la Provincia de Mendoza",
       "position": "Instructor",
       "startDate": "2006",
+      "endDate": "2006",
       "summary": "Cursos gratuitos de manejo de PC para la comunidad."
     }
   ]
