@@ -102,6 +102,14 @@
     }
   ],
   "certificates": [
+    { "date": "2023-05", "name": "Angular & Spring Boot: Creando web app full stack", "issuer": "Udemy" },
+    { "date": "2023-04", "name": "Master Drools programming - from Beginner to Intermediate", "issuer": "Udemy" },
+    { "date": "2021-09", "name": "AWS Certified Developer – Associate (expiró 2024-09)", "issuer": "Amazon Web Services" },
+    { "date": "2020-10", "name": "Spring Framework 5", "issuer": "Udemy" },
+    { "date": "2020-04", "name": "Ionic", "issuer": "Udemy" },
+    { "date": "2019-11", "name": "Angular Avanzado", "issuer": "Udemy" },
+    { "date": "2019-04", "name": "Java, POO, JDBC, Servlets, JSPs, Java EE, Web Services, JSF, EJB, JPA, PrimeFaces y JAX-RS", "issuer": "Udemy" },
+    { "date": "2018-04", "name": "Angular 5+", "issuer": "Udemy" },
     { "date": "2018", "name": "Patrones de diseño de software y principios SOLID", "issuer": "Udemy" },
     { "date": "2017", "name": "Desarrollo Web con Spring 4.3", "issuer": "Udemy" },
     { "date": "2017", "name": "Desarrollo de Aplicaciones con Angular", "issuer": "Udemy" },
