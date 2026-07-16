@@ -101,10 +101,11 @@
     },
     {
       "language": "Inglés",
-      "fluency": "Intermedio (Callan Method nivel 8)"
+      "fluency": "Avanzado (B2, Open English Nivel 8)"
     }
   ],
   "certificates": [
+    { "date": "2024-07", "name": "Certificate of Proficiency — Nivel 8 (CEFR B2)", "issuer": "Open English" },
     { "date": "2023-05", "name": "Angular & Spring Boot: Creando web app full stack", "issuer": "Udemy" },
     { "date": "2023-04", "name": "Master Drools programming - from Beginner to Intermediate", "issuer": "Udemy" },
     { "date": "2021-09", "name": "AWS Certified Developer – Associate (expiró 2024-09)", "issuer": "Amazon Web Services" },
