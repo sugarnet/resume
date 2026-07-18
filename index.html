@@ -42,12 +42,15 @@
 
   /* ---------- header ---------- */
   header { margin-bottom: 56px; }
+  .header-top {
+    display: flex; justify-content: space-between; align-items: center;
+    gap: 16px; flex-wrap: wrap; margin-bottom: 12px;
+  }
   .kicker {
     font-family: var(--mono);
     font-size: 13px;
     color: var(--accent);
     letter-spacing: .08em;
-    margin-bottom: 12px;
   }
   h1 {
     font-family: var(--display);
@@ -70,7 +73,7 @@
   .pdf-btn {
     font-family: var(--mono); font-size: 13px; color: var(--ink);
     background: var(--card); border: 1px solid var(--line);
-    border-radius: 7px; padding: 8px 14px; margin-top: 24px;
+    border-radius: 7px; padding: 8px 14px; flex-shrink: 0;
     cursor: pointer;
   }
   .pdf-btn:hover, .pdf-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
@@ -178,11 +181,13 @@
   <div id="error">No pude cargar <code>resume.json</code>. Si abriste el archivo directo desde el disco, serví la carpeta con <code>python -m http.server</code> y entrá por <code>http://localhost:8000</code>.</div>
 
   <header>
-    <div class="kicker">$ git log --author="dscifo" --all</div>
+    <div class="header-top">
+      <div class="kicker">$ git log --author="dscifo" --all</div>
+      <button class="pdf-btn" id="pdf-btn" type="button">↓ Descargar PDF</button>
+    </div>
     <h1 id="name"></h1>
     <p class="label" id="label"></p>
     <div class="contact" id="contact"></div>
-    <button class="pdf-btn" id="pdf-btn" type="button">↓ Descargar PDF</button>
   </header>
 
   <section id="s-summary" hidden>
