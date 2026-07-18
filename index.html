@@ -145,6 +145,17 @@
   .simple .yr { font-family: var(--mono); font-size: 13px; color: var(--accent); min-width: 48px; flex-shrink: 0; padding-top: 2px; }
   .simple .who { color: var(--ink-soft); }
 
+  .certs-more { margin-top: 4px; }
+  .certs-more summary {
+    font-family: var(--mono); font-size: 13px; color: var(--accent);
+    cursor: pointer; padding: 10px 0; list-style: none;
+  }
+  .certs-more summary::-webkit-details-marker { display: none; }
+  .certs-more summary::before { content: "▸ "; }
+  .certs-more[open] summary::before { content: "▾ "; }
+  .certs-more summary:hover, .certs-more summary:focus-visible { text-decoration: underline; }
+  .certs-more .simple { margin-top: 4px; }
+
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
 
@@ -173,6 +184,8 @@
     a { color: var(--ink); }
     footer { display: none; }
     .pdf-btn { display: none; }
+    .certs-more summary { display: none; }
+    .certs-more:not([open]) > *:not(summary) { display: block !important; }
   }
 </style>
 </head>
@@ -224,6 +237,10 @@
   <section id="s-certs" hidden>
     <h2>Cursos y certificaciones</h2>
     <ul class="simple" id="certs"></ul>
+    <details class="certs-more" id="certs-more" hidden>
+      <summary id="certs-more-label">Ver más certificaciones</summary>
+      <ul class="simple" id="certs-extra"></ul>
+    </details>
   </section>
 
   <section id="s-volunteer" hidden>
@@ -333,9 +350,17 @@
   }
 
   if (r.certificates?.length) {
-    $("certs").innerHTML = r.certificates.map(c => `<li>
+    const certLi = c => `<li>
       <span class="yr">${esc(c.date || "")}</span>
-      <span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`).join("");
+      <span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`;
+    const featured = r.certificates.filter(c => c.featured);
+    const rest = r.certificates.filter(c => !c.featured);
+    $("certs").innerHTML = (featured.length ? featured : r.certificates).map(certLi).join("");
+    if (featured.length && rest.length) {
+      $("certs-extra").innerHTML = rest.map(certLi).join("");
+      $("certs-more-label").textContent = `Ver ${rest.length} certificaciones más`;
+      $("certs-more").hidden = false;
+    }
     show("certs");
   }
 
