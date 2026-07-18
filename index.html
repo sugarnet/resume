@@ -67,6 +67,13 @@
     font-family: var(--mono); font-size: 13px;
   }
   .contact span { color: var(--ink-soft); }
+  .pdf-btn {
+    font-family: var(--mono); font-size: 13px; color: var(--ink);
+    background: var(--card); border: 1px solid var(--line);
+    border-radius: 7px; padding: 8px 14px; margin-top: 24px;
+    cursor: pointer;
+  }
+  .pdf-btn:hover, .pdf-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
 
   /* ---------- sections ---------- */
   section { margin-bottom: 52px; }
@@ -162,6 +169,7 @@
     .commit::before { background: var(--accent); box-shadow: none; }
     a { color: var(--ink); }
     footer { display: none; }
+    .pdf-btn { display: none; }
   }
 </style>
 </head>
@@ -174,6 +182,7 @@
     <h1 id="name"></h1>
     <p class="label" id="label"></p>
     <div class="contact" id="contact"></div>
+    <button class="pdf-btn" id="pdf-btn" type="button">↓ Descargar PDF</button>
   </header>
 
   <section id="s-summary" hidden>
@@ -241,6 +250,8 @@
     if (s) return `${s} → actualidad`;
     return e || "";
   }
+
+  $("pdf-btn").addEventListener("click", () => window.print());
 
   let r;
   try {
