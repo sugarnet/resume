@@ -104,8 +104,11 @@
   ],
   "certificates": [
     { "date": "2026-07", "name": "AI Coder: Complete Claude Code & Coding Agents Course", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-5c06bb72-3a2e-4076-b3ed-b593854f3075/" },
+    { "date": "2026-07", "name": "Angular Pro: Lleva tus bases al siguiente nivel", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-699f7505-1031-482b-b0b1-b50122851385/" },
+    { "date": "2025-11", "name": "Angular: De cero a experto", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-0e72e582-dc82-4b6f-a6a8-01b29537c19b/" },
+    { "date": "2025-05", "name": "GitHub Copilot Certified", "issuer": "Credly", "url": "https://www.credly.com/badges/68ac473d-08f6-4a16-9fb9-a99db10696b1/public_url" },
     { "date": "2024-08", "name": "Spring AI: Beginner to Guru", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-65af77ae-2479-4bc1-8a30-48a763f59995/" },
-    { "date": "2024-07", "name": "Certificate of Proficiency — Nivel 8 (CEFR B2)", "issuer": "Open English" },
+    { "date": "2024-07", "name": "Certificate of Proficiency — Nivel 8 (CEFR B2)", "issuer": "Open English", "url": "https://oecertificate.short.gy/7uR6zd" },
     { "date": "2024-07", "name": "Practical OpenShift for Developers - OpenShift 4", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-ac14cffb-b7cb-4990-a649-85abe6189aea/" },
     { "date": "2024-04", "name": "LO2 Generative AI - GitHub Copilot Training", "issuer": "GlobalLogic" },
     { "date": "2024-04", "name": "OpenShift for the Absolute Beginners - Hands-on", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-2f5bedf4-1cdc-4681-8813-7315e4e6aa14/" },
