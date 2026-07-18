@@ -304,7 +304,7 @@
   if (r.certificates?.length) {
     $("certs").innerHTML = r.certificates.map(c => `<li>
       <span class="yr">${esc(c.date || "")}</span>
-      <span>${esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`).join("");
+      <span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`).join("");
     show("certs");
   }
 
