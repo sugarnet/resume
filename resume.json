@@ -2,10 +2,16 @@
   "$schema": "https://raw.githubusercontent.com/jsonresume/resume-schema/v1.0.0/schema.json",
   "basics": {
     "name": "Diego David Scifo",
-    "label": "Ingeniero en Sistemas de Información · Senior Java / Angular Developer",
+    "label": {
+      "es": "Ingeniero en Sistemas de Información · Senior Java / Angular Developer",
+      "en": "Information Systems Engineer · Senior Java / Angular Developer"
+    },
     "email": "diegoscifo@yahoo.com.ar",
     "phone": "+54 9 263 4571423",
-    "summary": "Soy Ingeniero en Sistemas con más de 15 años de experiencia en desarrollo de software, liderazgo de proyectos y análisis funcional. Me especializo en microservicios Java (Spring Boot, Spring Cloud) y frontend Angular, y potencio mi desarrollo con agentes de IA.",
+    "summary": {
+      "es": "Soy Ingeniero en Sistemas con más de 15 años de experiencia en desarrollo de software, liderazgo de proyectos y análisis funcional. Me especializo en microservicios Java (Spring Boot, Spring Cloud) y frontend Angular, y potencio mi desarrollo con agentes de IA.",
+      "en": "I'm a Systems Engineer with over 15 years of experience in software development, project leadership, and functional analysis. I specialize in Java microservices (Spring Boot, Spring Cloud) and Angular frontend, and enhance my development with AI agents."
+    },
     "location": {
       "city": "Maipú",
       "region": "Mendoza",
@@ -30,13 +36,19 @@
       "position": "Java Developer",
       "startDate": "2019-12",
       "highlights": [
-        "Líder Técnico: migración de homebanking para entidad bancaria — equipo de 12 desarrolladores, +500.000 usuarios migrados, +20.000 transacciones diarias en canales web y mobile (desde 2020-07, proyecto en curso hace más de 5 años)",
-        "Desarrollador: aplicación nueva para presupuestar campañas con influencers de marca, para empresa multinacional de bebidas, enfocada inicialmente en Argentina (2019-12 a 2020-06)"
+        {
+          "es": "Líder Técnico: migración de homebanking para entidad bancaria — equipo de 12 desarrolladores, +500.000 usuarios migrados, +20.000 transacciones diarias en canales web y mobile (desde 2020-07, proyecto en curso hace más de 5 años)",
+          "en": "Technical Lead: homebanking migration for a banking institution — team of 12 developers, +500,000 users migrated, +20,000 daily transactions across web and mobile channels (since 2020-07, ongoing for over 5 years)"
+        },
+        {
+          "es": "Desarrollador: aplicación nueva para presupuestar campañas con influencers de marca, para empresa multinacional de bebidas, enfocada inicialmente en Argentina (2019-12 a 2020-06)",
+          "en": "Developer: new application to budget brand influencer marketing campaigns, for a multinational beverage company, initially focused on Argentina (2019-12 to 2020-06)"
+        }
       ]
     },
     {
       "name": "Instituto de Educación Superior 9-008 Manuel Belgrano (Sede Rodeo del Medio)",
-      "position": "Profesor de Programación",
+      "position": { "es": "Profesor de Programación", "en": "Programming Teacher" },
       "startDate": "2018-06",
       "endDate": "2022-04"
     },
@@ -45,34 +57,61 @@
       "position": "Java / Angular Developer",
       "startDate": "2010-03",
       "endDate": "2019-12-13",
-      "summary": "Distintos roles a lo largo de los años: desarrollo, QA, análisis funcional y liderazgo de proyectos.",
+      "summary": {
+        "es": "Distintos roles a lo largo de los años: desarrollo, QA, análisis funcional y liderazgo de proyectos.",
+        "en": "Various roles over the years: development, QA, functional analysis, and project leadership."
+      },
       "highlights": [
-        "Proyecto para una red de cajeros automáticos (2019) — Java 8, Spring, JHipster, SQL Server; desarrollo no llegó a producción en la empresa, continuado por otro proveedor",
-        "Proyecto de BI para empresa de Chile (2017) — plataforma de comparación de precios entre retailers mediante crawling/scraping de tiendas de distintas partes del mundo (productos, precios, promociones), disponible tanto para el público como para las tiendas — Java 8, Spring, Hibernate, JPA, Redis, MySQL",
-        "Líder de Proyectos: Cargas Compartidas (transporte, Mendoza), plataforma e-learning de inglés (cliente de España), digitalización documental (2017)",
-        "Líder de Proyectos: Encuesta de Precios de Insumos de la Construcción — Dirección de Estadísticas e Investigaciones Económicas, Gobierno de Mendoza",
-        "Compañía petrolera: Sistema de Gestión de Oportunidades y Control de Gestión de Operaciones (desde 2015)",
-        "Analista Funcional SSr en compañía petrolera (desde 2013); QA con automatización de pruebas en HP QTP (2013)",
-        "Maintenance Project Leader (2012) y Programmer/Tester (2011-2012) en compañía petrolera — PHP, Javascript, Oracle",
-        "Programmer/Tester: Observatorio de Turismo Enológico (Bodegas de Argentina), Huentala Cooperativa de Trabajo — PHP, Javascript, MySQL",
+        {
+          "es": "Proyecto para una red de cajeros automáticos (2019) — Java 8, Spring, JHipster, SQL Server; desarrollo no llegó a producción en la empresa, continuado por otro proveedor",
+          "en": "Project for an ATM network (2019) — Java 8, Spring, JHipster, SQL Server; development did not reach production at the company, continued by another vendor"
+        },
+        {
+          "es": "Proyecto de BI para empresa de Chile (2017) — plataforma de comparación de precios entre retailers mediante crawling/scraping de tiendas de distintas partes del mundo (productos, precios, promociones), disponible tanto para el público como para las tiendas — Java 8, Spring, Hibernate, JPA, Redis, MySQL",
+          "en": "BI project for a Chilean company (2017) — retail price-comparison platform via crawling/scraping of stores from different parts of the world (products, prices, promotions), available to both the public and the stores — Java 8, Spring, Hibernate, JPA, Redis, MySQL"
+        },
+        {
+          "es": "Líder de Proyectos: Cargas Compartidas (transporte, Mendoza), plataforma e-learning de inglés (cliente de España), digitalización documental (2017)",
+          "en": "Project Leader: Cargas Compartidas (transportation, Mendoza), English e-learning platform (client in Spain), document digitization (2017)"
+        },
+        {
+          "es": "Líder de Proyectos: Encuesta de Precios de Insumos de la Construcción — Dirección de Estadísticas e Investigaciones Económicas, Gobierno de Mendoza",
+          "en": "Project Leader: Construction Input Price Survey — Directorate of Statistics and Economic Research, Government of Mendoza"
+        },
+        {
+          "es": "Compañía petrolera: Sistema de Gestión de Oportunidades y Control de Gestión de Operaciones (desde 2015)",
+          "en": "Oil company: Opportunity Management and Operations Control System (since 2015)"
+        },
+        {
+          "es": "Analista Funcional SSr en compañía petrolera (desde 2013); QA con automatización de pruebas en HP QTP (2013)",
+          "en": "Senior Functional Analyst at an oil company (since 2013); QA with test automation in HP QTP (2013)"
+        },
+        {
+          "es": "Maintenance Project Leader (2012) y Programmer/Tester (2011-2012) en compañía petrolera — PHP, Javascript, Oracle",
+          "en": "Maintenance Project Leader (2012) and Programmer/Tester (2011-2012) at an oil company — PHP, Javascript, Oracle"
+        },
+        {
+          "es": "Programmer/Tester: Observatorio de Turismo Enológico (Bodegas de Argentina), Huentala Cooperativa de Trabajo — PHP, Javascript, MySQL",
+          "en": "Programmer/Tester: Wine Tourism Observatory (Bodegas de Argentina), Huentala Cooperativa de Trabajo — PHP, Javascript, MySQL"
+        },
         "Programmer: Construpages — PHP, jQuery, Zend Framework, MySQL"
       ]
     },
     {
       "name": "Sommet",
-      "position": "Desarrollador Web",
+      "position": { "es": "Desarrollador Web", "en": "Web Developer" },
       "startDate": "2008",
       "endDate": "2009",
       "highlights": [
-        "Desarrollo de aplicaciones web en PHP"
+        { "es": "Desarrollo de aplicaciones web en PHP", "en": "Development of web applications in PHP" }
       ]
     }
   ],
   "education": [
     {
       "institution": "Universidad Tecnológica Nacional — Facultad Regional Mendoza",
-      "area": "Ingeniería en Sistemas de Información",
-      "studyType": "Ingeniero",
+      "area": { "es": "Ingeniería en Sistemas de Información", "en": "Information Systems Engineering" },
+      "studyType": { "es": "Ingeniero", "en": "Engineer" },
       "endDate": "2009-12"
     }
   ],
@@ -86,30 +125,33 @@
       "keywords": ["Angular", "TypeScript", "HTML", "CSS", "Bootstrap", "JavaScript"]
     },
     {
-      "name": "Bases de datos",
+      "name": { "es": "Bases de datos", "en": "Databases" },
       "keywords": ["MySQL", "Oracle", "SQL Server", "Redis"]
     },
     {
-      "name": "Análisis y diseño",
-      "keywords": ["UML", "Enterprise Architect", "Patrones GoF", "Scrum"]
+      "name": { "es": "Análisis y diseño", "en": "Analysis & Design" },
+      "keywords": ["UML", "Enterprise Architect", { "es": "Patrones GoF", "en": "GoF Patterns" }, "Scrum"]
     },
     {
       "name": "IA / Agentic Coding",
       "keywords": ["Claude Code", "GitHub Copilot", "Prompt Engineering"]
     },
     {
-      "name": "Otros",
-      "keywords": ["Linux (nivel medio)", "Android (proyectos personales)"]
+      "name": { "es": "Otros", "en": "Other" },
+      "keywords": [
+        { "es": "Linux (nivel medio)", "en": "Linux (intermediate)" },
+        { "es": "Android (proyectos personales)", "en": "Android (personal projects)" }
+      ]
     }
   ],
   "languages": [
     {
-      "language": "Español",
-      "fluency": "Nativo"
+      "language": { "es": "Español", "en": "Spanish" },
+      "fluency": { "es": "Nativo", "en": "Native" }
     },
     {
-      "language": "Inglés",
-      "fluency": "Avanzado (B2, Open English Nivel 8)"
+      "language": { "es": "Inglés", "en": "English" },
+      "fluency": { "es": "Avanzado (B2, Open English Nivel 8)", "en": "Advanced (B2, Open English Level 8)" }
     }
   ],
   "certificates": [
@@ -151,11 +193,14 @@
   "projects": [],
   "volunteer": [
     {
-      "organization": "Red de Informática Comunitaria — Gobierno de la Provincia de Mendoza",
+      "organization": { "es": "Red de Informática Comunitaria — Gobierno de la Provincia de Mendoza", "en": "Community IT Network — Government of the Province of Mendoza" },
       "position": "Instructor",
       "startDate": "2006",
       "endDate": "2006",
-      "summary": "Cursos gratuitos de manejo de PC para la comunidad."
+      "summary": {
+        "es": "Cursos gratuitos de manejo de PC para la comunidad.",
+        "en": "Free computer literacy courses for the community."
+      }
     }
   ]
 }

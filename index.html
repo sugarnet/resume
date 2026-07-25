@@ -191,12 +191,15 @@
 </head>
 <body>
 <div class="wrap">
-  <div id="error">No pude cargar <code>resume.json</code>. Si abriste el archivo directo desde el disco, serví la carpeta con <code>python -m http.server</code> y entrá por <code>http://localhost:8000</code>.</div>
+  <div id="error"></div>
 
   <header>
     <div class="header-top">
-      <div class="kicker">$ git log --author="dscifo" --all</div>
-      <button class="pdf-btn" id="pdf-btn" type="button">↓ Descargar PDF</button>
+      <div class="kicker" id="kicker"></div>
+      <div style="display:flex; gap:8px;">
+        <button class="pdf-btn" id="lang-btn" type="button"></button>
+        <button class="pdf-btn" id="pdf-btn" type="button"></button>
+      </div>
     </div>
     <h1 id="name"></h1>
     <p class="label" id="label"></p>
@@ -204,52 +207,52 @@
   </header>
 
   <section id="s-summary" hidden>
-    <h2>Perfil</h2>
+    <h2 id="h-summary"></h2>
     <p class="summary" id="summary"></p>
   </section>
 
   <section id="s-work" hidden>
-    <h2>Experiencia</h2>
+    <h2 id="h-work"></h2>
     <div class="log" id="work"></div>
   </section>
 
   <section id="s-projects" hidden>
-    <h2>Proyectos</h2>
+    <h2 id="h-projects"></h2>
     <div class="log" id="projects"></div>
   </section>
 
   <section id="s-skills" hidden>
-    <h2>Tecnologías</h2>
+    <h2 id="h-skills"></h2>
     <div class="skills" id="skills"></div>
   </section>
 
   <div class="two-col">
     <section id="s-education" hidden>
-      <h2>Formación</h2>
+      <h2 id="h-education"></h2>
       <ul class="simple" id="education"></ul>
     </section>
     <section id="s-languages" hidden>
-      <h2>Idiomas</h2>
+      <h2 id="h-languages"></h2>
       <ul class="simple" id="languages"></ul>
     </section>
   </div>
 
   <section id="s-certs" hidden>
-    <h2>Cursos y certificaciones</h2>
+    <h2 id="h-certs"></h2>
     <ul class="simple" id="certs"></ul>
     <details class="certs-more" id="certs-more" hidden>
-      <summary id="certs-more-label">Ver más certificaciones</summary>
+      <summary id="certs-more-label"></summary>
       <ul class="simple" id="certs-extra"></ul>
     </details>
   </section>
 
   <section id="s-volunteer" hidden>
-    <h2>Otras actividades</h2>
+    <h2 id="h-volunteer"></h2>
     <div class="log" id="volunteer"></div>
   </section>
 
   <footer>
-    <span>Fuente de verdad: <a href="resume.json">resume.json</a></span>
+    <span id="footer-source"><a href="resume.json">resume.json</a></span>
     <span id="updated"></span>
   </footer>
 </div>
@@ -260,119 +263,187 @@
   const esc = s => String(s ?? "").replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
   const show = id => { $("s-" + id).hidden = false; };
 
-  const MESES = ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"];
+  const UI = {
+    es: {
+      htmlLang: "es", kicker: '$ git log --author="dscifo" --all',
+      pdfBtn: "↓ Descargar PDF", langBtn: "EN",
+      profile: "Perfil", experience: "Experiencia", projects: "Proyectos",
+      skills: "Tecnologías", education: "Formación", languages: "Idiomas",
+      certs: "Cursos y certificaciones", certsMore: n => `Ver ${n} certificaciones más`,
+      volunteer: "Otras actividades", present: "actualidad",
+      months: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
+      footerSource: "Fuente de verdad:", locale: "es-AR",
+      render: d => `render: ${d}`,
+      error: 'No pude cargar <code>resume.json</code>. Si abriste el archivo directo desde el disco, serví la carpeta con <code>python -m http.server</code> y entrá por <code>http://localhost:8000</code>.',
+      studyPrefix: (studyType, area) => `${studyType} en ${area}`
+    },
+    en: {
+      htmlLang: "en", kicker: '$ git log --author="dscifo" --all',
+      pdfBtn: "↓ Download PDF", langBtn: "ES",
+      profile: "Profile", experience: "Experience", projects: "Projects",
+      skills: "Skills", education: "Education", languages: "Languages",
+      certs: "Courses & Certifications", certsMore: n => `Show ${n} more certifications`,
+      volunteer: "Other activities", present: "present",
+      months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+      footerSource: "Source of truth:", locale: "en-US",
+      render: d => `rendered: ${d}`,
+      error: 'Could not load <code>resume.json</code>. If you opened the file directly from disk, serve the folder with <code>python -m http.server</code> and visit <code>http://localhost:8000</code>.',
+      studyPrefix: (studyType, area) => `${studyType} in ${area}`
+    }
+  };
+
+  function detectLang() {
+    const saved = localStorage.getItem("cv-lang");
+    if (saved === "es" || saved === "en") return saved;
+    return navigator.language?.toLowerCase().startsWith("es") ? "es" : "en";
+  }
+  let lang = detectLang();
+  const L = field => {
+    if (field == null) return "";
+    if (typeof field === "string") return field;
+    return field[lang] ?? field.es ?? "";
+  };
+
+  const MESES = () => UI[lang].months;
   function fmt(d) {
     if (!d) return null;
     const [y, m] = String(d).split("-");
-    return m ? `${MESES[+m - 1]} ${y}` : y;
+    return m ? `${MESES()[+m - 1]} ${y}` : y;
   }
   function range(a, b) {
     const s = fmt(a), e = fmt(b);
     if (s && e) return `${s} → ${e}`;
-    if (s) return `${s} → actualidad`;
+    if (s) return `${s} → ${UI[lang].present}`;
     return e || "";
   }
 
-  $("pdf-btn").addEventListener("click", () => window.print());
+  let resume;
+  function renderAll() {
+    const t = UI[lang];
+    document.documentElement.lang = t.htmlLang;
+    $("kicker").textContent = t.kicker;
+    $("pdf-btn").textContent = t.pdfBtn;
+    $("lang-btn").textContent = t.langBtn;
+    $("h-summary").textContent = t.profile;
+    $("h-work").textContent = t.experience;
+    $("h-projects").textContent = t.projects;
+    $("h-skills").textContent = t.skills;
+    $("h-education").textContent = t.education;
+    $("h-languages").textContent = t.languages;
+    $("h-certs").textContent = t.certs;
+    $("h-volunteer").textContent = t.volunteer;
+    $("footer-source").innerHTML = `${esc(t.footerSource)} <a href="resume.json">resume.json</a>`;
+    $("error").innerHTML = t.error;
 
-  let r;
+    const r = resume;
+    if (!r) return;
+
+    // header
+    const b = r.basics || {};
+    document.title = `${b.name} — CV`;
+    $("name").textContent = b.name || "";
+    $("label").textContent = L(b.label);
+    const loc = b.location ? [b.location.city, b.location.region, b.location.countryCode].filter(Boolean).join(", ") : "";
+    const links = [
+      loc && `<span>${esc(loc)}</span>`,
+      b.email && `<a href="mailto:${esc(b.email)}">${esc(b.email)}</a>`,
+      b.phone && `<span>${esc(b.phone)}</span>`,
+      ...(b.profiles || []).filter(p => p.url && !/COMPLETAR/i.test(p.url))
+        .map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.network)}</a>`)
+    ].filter(Boolean);
+    $("contact").innerHTML = links.join("");
+
+    if (b.summary) { $("summary").textContent = L(b.summary); show("summary"); }
+
+    // experiencia como git log
+    function commit({ title, org, orgUrl, start, end, sum, items }) {
+      return `<article class="commit">
+        <div class="commit-meta"><span class="range">${esc(range(start, end))}</span></div>
+        <h3>${esc(L(title))}</h3>
+        ${org ? `<p class="org">${orgUrl ? `<a href="${esc(orgUrl)}" target="_blank" rel="noopener">${esc(org)}</a>` : esc(org)}</p>` : ""}
+        ${sum ? `<p class="sum">${esc(L(sum))}</p>` : ""}
+        ${items && items.length ? `<ul>${items.map(h => `<li>${esc(L(h))}</li>`).join("")}</ul>` : ""}
+      </article>`;
+    }
+
+    if (r.work?.length) {
+      $("work").innerHTML = r.work.map(w => commit({
+        title: w.position, org: w.name, orgUrl: w.url,
+        start: w.startDate, end: w.endDate, sum: w.summary, items: w.highlights
+      })).join("");
+      show("work");
+    }
+
+    if (r.projects?.length) {
+      $("projects").innerHTML = r.projects.map(p => commit({
+        title: p.name, org: p.entity, orgUrl: p.url,
+        start: p.startDate, end: p.endDate, sum: p.description, items: p.highlights
+      })).join("");
+      show("projects");
+    }
+
+    if (r.skills?.length) {
+      $("skills").innerHTML = r.skills.map(s => `<div class="skill-card">
+        <h3>${esc(L(s.name))}</h3>
+        <div class="tags">${(s.keywords || []).map(k => `<span class="tag">${esc(L(k))}</span>`).join("")}</div>
+      </div>`).join("");
+      show("skills");
+    }
+
+    if (r.education?.length) {
+      $("education").innerHTML = r.education.map(e => `<li>
+        <span class="yr">${esc(fmt(e.endDate) || "")}</span>
+        <span><strong>${esc(e.studyType ? t.studyPrefix(L(e.studyType), L(e.area)) : L(e.area))}</strong><br>
+        <span class="who">${esc(e.institution)}</span></span></li>`).join("");
+      show("education");
+    }
+
+    if (r.languages?.length) {
+      $("languages").innerHTML = r.languages.map(l => `<li>
+        <span><strong>${esc(L(l.language))}</strong> — <span class="who">${esc(L(l.fluency))}</span></span></li>`).join("");
+      show("languages");
+    }
+
+    if (r.certificates?.length) {
+      const certLi = c => `<li>
+        <span class="yr">${esc(c.date || "")}</span>
+        <span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`;
+      const featured = r.certificates.filter(c => c.featured);
+      const rest = r.certificates.filter(c => !c.featured);
+      $("certs").innerHTML = (featured.length ? featured : r.certificates).map(certLi).join("");
+      if (featured.length && rest.length) {
+        $("certs-extra").innerHTML = rest.map(certLi).join("");
+        $("certs-more-label").textContent = t.certsMore(rest.length);
+        $("certs-more").hidden = false;
+      }
+      show("certs");
+    }
+
+    if (r.volunteer?.length) {
+      $("volunteer").innerHTML = r.volunteer.map(v => commit({
+        title: v.position, org: L(v.organization),
+        start: v.startDate, end: v.endDate, sum: v.summary, items: v.highlights
+      })).join("");
+      show("volunteer");
+    }
+
+    $("updated").textContent = t.render(new Date().toLocaleDateString(t.locale));
+  }
+
+  $("pdf-btn").addEventListener("click", () => window.print());
+  $("lang-btn").addEventListener("click", () => {
+    lang = lang === "es" ? "en" : "es";
+    localStorage.setItem("cv-lang", lang);
+    renderAll();
+  });
+
+  renderAll();
   try {
-    r = await (await fetch("resume.json", { cache: "no-store" })).json();
+    resume = await (await fetch("resume.json", { cache: "no-store" })).json();
+    renderAll();
   } catch (e) {
     $("error").style.display = "block";
-    return;
   }
-
-  // header
-  const b = r.basics || {};
-  document.title = `${b.name} — CV`;
-  $("name").textContent = b.name || "";
-  $("label").textContent = b.label || "";
-  const loc = b.location ? [b.location.city, b.location.region, b.location.countryCode].filter(Boolean).join(", ") : "";
-  const links = [
-    loc && `<span>${esc(loc)}</span>`,
-    b.email && `<a href="mailto:${esc(b.email)}">${esc(b.email)}</a>`,
-    b.phone && `<span>${esc(b.phone)}</span>`,
-    ...(b.profiles || []).filter(p => p.url && !/COMPLETAR/i.test(p.url))
-      .map(p => `<a href="${esc(p.url)}" target="_blank" rel="noopener">${esc(p.network)}</a>`)
-  ].filter(Boolean);
-  $("contact").innerHTML = links.join("");
-
-  if (b.summary) { $("summary").textContent = b.summary; show("summary"); }
-
-  // experiencia como git log
-  function commit({ title, org, orgUrl, start, end, sum, items }) {
-    return `<article class="commit">
-      <div class="commit-meta"><span class="range">${esc(range(start, end))}</span></div>
-      <h3>${esc(title)}</h3>
-      ${org ? `<p class="org">${orgUrl ? `<a href="${esc(orgUrl)}" target="_blank" rel="noopener">${esc(org)}</a>` : esc(org)}</p>` : ""}
-      ${sum ? `<p class="sum">${esc(sum)}</p>` : ""}
-      ${items && items.length ? `<ul>${items.map(h => `<li>${esc(h)}</li>`).join("")}</ul>` : ""}
-    </article>`;
-  }
-
-  if (r.work?.length) {
-    $("work").innerHTML = r.work.map(w => commit({
-      title: w.position, org: w.name, orgUrl: w.url,
-      start: w.startDate, end: w.endDate, sum: w.summary, items: w.highlights
-    })).join("");
-    show("work");
-  }
-
-  if (r.projects?.length) {
-    $("projects").innerHTML = r.projects.map(p => commit({
-      title: p.name, org: p.entity, orgUrl: p.url,
-      start: p.startDate, end: p.endDate, sum: p.description, items: p.highlights
-    })).join("");
-    show("projects");
-  }
-
-  if (r.skills?.length) {
-    $("skills").innerHTML = r.skills.map(s => `<div class="skill-card">
-      <h3>${esc(s.name)}</h3>
-      <div class="tags">${(s.keywords || []).map(k => `<span class="tag">${esc(k)}</span>`).join("")}</div>
-    </div>`).join("");
-    show("skills");
-  }
-
-  if (r.education?.length) {
-    $("education").innerHTML = r.education.map(e => `<li>
-      <span class="yr">${esc(fmt(e.endDate) || "")}</span>
-      <span><strong>${esc(e.studyType ? e.studyType + " en " + e.area : e.area)}</strong><br>
-      <span class="who">${esc(e.institution)}</span></span></li>`).join("");
-    show("education");
-  }
-
-  if (r.languages?.length) {
-    $("languages").innerHTML = r.languages.map(l => `<li>
-      <span><strong>${esc(l.language)}</strong> — <span class="who">${esc(l.fluency)}</span></span></li>`).join("");
-    show("languages");
-  }
-
-  if (r.certificates?.length) {
-    const certLi = c => `<li>
-      <span class="yr">${esc(c.date || "")}</span>
-      <span>${c.url ? `<a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.name)}</a>` : esc(c.name)} <span class="who">— ${esc(c.issuer)}</span></span></li>`;
-    const featured = r.certificates.filter(c => c.featured);
-    const rest = r.certificates.filter(c => !c.featured);
-    $("certs").innerHTML = (featured.length ? featured : r.certificates).map(certLi).join("");
-    if (featured.length && rest.length) {
-      $("certs-extra").innerHTML = rest.map(certLi).join("");
-      $("certs-more-label").textContent = `Ver ${rest.length} certificaciones más`;
-      $("certs-more").hidden = false;
-    }
-    show("certs");
-  }
-
-  if (r.volunteer?.length) {
-    $("volunteer").innerHTML = r.volunteer.map(v => commit({
-      title: v.position, org: v.organization,
-      start: v.startDate, end: v.endDate, sum: v.summary, items: v.highlights
-    })).join("");
-    show("volunteer");
-  }
-
-  $("updated").textContent = `render: ${new Date().toLocaleDateString("es-AR")}`;
 })();
 </script>
 </body>
