@@ -78,6 +78,18 @@
   }
   .pdf-btn:hover, .pdf-btn:focus-visible { border-color: var(--accent); color: var(--accent); }
 
+  .lang-toggle {
+    display: inline-flex; background: var(--card); border: 1px solid var(--line);
+    border-radius: 8px; padding: 3px; font-family: var(--mono); font-size: 13px;
+    flex-shrink: 0;
+  }
+  .lang-toggle button {
+    all: unset; cursor: pointer; padding: 6px 13px; border-radius: 6px;
+    color: var(--ink-soft); transition: background .15s, color .15s;
+  }
+  .lang-toggle button.active { background: var(--accent); color: #06120B; font-weight: 600; }
+  .lang-toggle button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+
   /* ---------- sections ---------- */
   section { margin-bottom: 52px; }
   h2 {
@@ -159,12 +171,6 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
 
-  footer {
-    margin-top: 60px; padding-top: 20px; border-top: 1px solid var(--line);
-    font-family: var(--mono); font-size: 12px; color: var(--ink-soft);
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px;
-  }
-
   #error { display: none; background: #2D1618; border: 1px solid #6B2A2E; color: #F5B4B8;
     border-radius: 8px; padding: 14px 16px; font-size: 14px; }
   #error code { color: var(--accent); }
@@ -182,8 +188,7 @@
     .commit { break-inside: avoid; }
     .commit::before { background: var(--accent); box-shadow: none; }
     a { color: var(--ink); }
-    footer { display: none; }
-    .pdf-btn { display: none; }
+    .pdf-btn, .lang-toggle { display: none; }
     .certs-more summary { display: none; }
     .certs-more:not([open]) > *:not(summary) { display: block !important; }
   }
@@ -197,7 +202,10 @@
     <div class="header-top">
       <div class="kicker" id="kicker"></div>
       <div style="display:flex; gap:8px;">
-        <button class="pdf-btn" id="lang-btn" type="button"></button>
+        <div class="lang-toggle" role="group" id="lang-toggle">
+          <button type="button" id="lang-es">ES</button>
+          <button type="button" id="lang-en">EN</button>
+        </div>
         <button class="pdf-btn" id="pdf-btn" type="button"></button>
       </div>
     </div>
@@ -251,10 +259,6 @@
     <div class="log" id="volunteer"></div>
   </section>
 
-  <footer>
-    <span id="footer-source"><a href="resume.json">resume.json</a></span>
-    <span id="updated"></span>
-  </footer>
 </div>
 
 <script>
@@ -266,27 +270,23 @@
   const UI = {
     es: {
       htmlLang: "es", kicker: '$ git log --author="dscifo" --all',
-      pdfBtn: "↓ Descargar PDF", langBtn: "EN",
+      pdfBtn: "↓ Descargar PDF",
       profile: "Perfil", experience: "Experiencia", projects: "Proyectos",
       skills: "Tecnologías", education: "Formación", languages: "Idiomas",
       certs: "Cursos y certificaciones", certsMore: n => `Ver ${n} certificaciones más`,
       volunteer: "Otras actividades", present: "actualidad",
       months: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
-      footerSource: "Fuente de verdad:", locale: "es-AR",
-      render: d => `render: ${d}`,
       error: 'No pude cargar <code>resume.json</code>. Si abriste el archivo directo desde el disco, serví la carpeta con <code>python -m http.server</code> y entrá por <code>http://localhost:8000</code>.',
       studyPrefix: (studyType, area) => `${studyType} en ${area}`
     },
     en: {
       htmlLang: "en", kicker: '$ git log --author="dscifo" --all',
-      pdfBtn: "↓ Download PDF", langBtn: "ES",
+      pdfBtn: "↓ Download PDF",
       profile: "Profile", experience: "Experience", projects: "Projects",
       skills: "Skills", education: "Education", languages: "Languages",
       certs: "Courses & Certifications", certsMore: n => `Show ${n} more certifications`,
       volunteer: "Other activities", present: "present",
       months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
-      footerSource: "Source of truth:", locale: "en-US",
-      render: d => `rendered: ${d}`,
       error: 'Could not load <code>resume.json</code>. If you opened the file directly from disk, serve the folder with <code>python -m http.server</code> and visit <code>http://localhost:8000</code>.',
       studyPrefix: (studyType, area) => `${studyType} in ${area}`
     }
@@ -323,7 +323,8 @@
     document.documentElement.lang = t.htmlLang;
     $("kicker").textContent = t.kicker;
     $("pdf-btn").textContent = t.pdfBtn;
-    $("lang-btn").textContent = t.langBtn;
+    $("lang-es").classList.toggle("active", lang === "es");
+    $("lang-en").classList.toggle("active", lang === "en");
     $("h-summary").textContent = t.profile;
     $("h-work").textContent = t.experience;
     $("h-projects").textContent = t.projects;
@@ -332,7 +333,6 @@
     $("h-languages").textContent = t.languages;
     $("h-certs").textContent = t.certs;
     $("h-volunteer").textContent = t.volunteer;
-    $("footer-source").innerHTML = `${esc(t.footerSource)} <a href="resume.json">resume.json</a>`;
     $("error").innerHTML = t.error;
 
     const r = resume;
@@ -427,15 +427,18 @@
       show("volunteer");
     }
 
-    $("updated").textContent = t.render(new Date().toLocaleDateString(t.locale));
+  }
+
+  function setLang(next) {
+    if (next === lang) return;
+    lang = next;
+    localStorage.setItem("cv-lang", lang);
+    renderAll();
   }
 
   $("pdf-btn").addEventListener("click", () => window.print());
-  $("lang-btn").addEventListener("click", () => {
-    lang = lang === "es" ? "en" : "es";
-    localStorage.setItem("cv-lang", lang);
-    renderAll();
-  });
+  $("lang-es").addEventListener("click", () => setLang("es"));
+  $("lang-en").addEventListener("click", () => setLang("en"));
 
   renderAll();
   try {
