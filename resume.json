@@ -134,7 +134,7 @@
     },
     {
       "name": "IA / Agentic Coding",
-      "keywords": ["Claude Code", "GitHub Copilot", "Prompt Engineering"]
+      "keywords": ["Claude Code", "GitHub Copilot", "Model Context Protocol (MCP)", "Prompt Engineering"]
     },
     {
       "name": { "es": "Otros", "en": "Other" },
@@ -155,6 +155,10 @@
     }
   ],
   "certificates": [
+    { "date": "2026-09", "name": "Introduction to Model Context Protocol", "issuer": "Anthropic" },
+    { "date": "2026-09", "name": "Claude Code in Action", "issuer": "Anthropic" },
+    { "date": "2026-09", "name": "Claude Code 101", "issuer": "Anthropic" },
+    { "date": "2026-09", "name": "AI Fluency: Framework & Foundations", "issuer": "Anthropic" },
     { "date": "2026-07", "name": "AI Coder: Complete Claude Code & Coding Agents Course", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-5c06bb72-3a2e-4076-b3ed-b593854f3075/", "featured": true },
     { "date": "2026-07", "name": "Angular Pro: Lleva tus bases al siguiente nivel", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-699f7505-1031-482b-b0b1-b50122851385/", "featured": true },
     { "date": "2025-11", "name": "Angular: De cero a experto", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-0e72e582-dc82-4b6f-a6a8-01b29537c19b/" },
