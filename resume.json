@@ -155,10 +155,10 @@
     }
   ],
   "certificates": [
-    { "date": "2026-09", "name": "Introduction to Model Context Protocol", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/xodn3yjh2bvx" },
-    { "date": "2026-09", "name": "Claude Code in Action", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/m3bcm4bra3bs" },
-    { "date": "2026-09", "name": "Claude Code 101", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/n9yppoh67hm9" },
-    { "date": "2026-09", "name": "AI Fluency: Framework & Foundations", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/nkzk4detxrmv" },
+    { "date": "2026-09", "name": "Introduction to Model Context Protocol", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/xodn3yjh2bvx", "featured": true },
+    { "date": "2026-09", "name": "Claude Code in Action", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/m3bcm4bra3bs", "featured": true },
+    { "date": "2026-09", "name": "Claude Code 101", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/n9yppoh67hm9", "featured": true },
+    { "date": "2026-09", "name": "AI Fluency: Framework & Foundations", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/nkzk4detxrmv", "featured": true },
     { "date": "2026-07", "name": "AI Coder: Complete Claude Code & Coding Agents Course", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-5c06bb72-3a2e-4076-b3ed-b593854f3075/", "featured": true },
     { "date": "2026-07", "name": "Angular Pro: Lleva tus bases al siguiente nivel", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-699f7505-1031-482b-b0b1-b50122851385/", "featured": true },
     { "date": "2025-11", "name": "Angular: De cero a experto", "issuer": "Udemy", "url": "https://www.udemy.com/certificate/UC-0e72e582-dc82-4b6f-a6a8-01b29537c19b/" },
