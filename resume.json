@@ -58,8 +58,8 @@
       "startDate": "2010-03",
       "endDate": "2019-12-13",
       "summary": {
-        "es": "Distintos roles a lo largo de los años: desarrollo, QA, análisis funcional y liderazgo de proyectos.",
-        "en": "Various roles over the years: development, QA, functional analysis, and project leadership."
+        "es": "Ejercí como desarrollador, QA, analista funcional y líder de proyectos.",
+        "en": "Worked as developer, QA engineer, functional analyst, and project leader."
       },
       "highlights": [
         {
@@ -103,7 +103,7 @@
       "startDate": "2008",
       "endDate": "2009",
       "highlights": [
-        { "es": "Desarrollo de aplicaciones web en PHP", "en": "Development of web applications in PHP" }
+        { "es": "Desarrollé aplicaciones web en PHP", "en": "Developed web applications in PHP" }
       ]
     }
   ],
