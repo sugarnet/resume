@@ -168,6 +168,8 @@
   .certs-more summary:hover, .certs-more summary:focus-visible { text-decoration: underline; }
   .certs-more .simple { margin-top: 4px; }
 
+  .print-note { display: none; }
+
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
 
@@ -210,6 +212,8 @@
     a { color: var(--ink); }
     .pdf-btn, .lang-toggle { display: none; }
     .certs-more, .kicker { display: none; }
+    .print-note { display: block; font-size: 11px; margin-top: 6px; font-style: italic; }
+    .print-note:empty { display: none; }
   }
 </style>
 </head>
@@ -271,6 +275,7 @@
       <summary id="certs-more-label"></summary>
       <ul class="simple" id="certs-extra"></ul>
     </details>
+    <p class="print-note" id="certs-print-note"></p>
   </section>
 
   <section id="s-volunteer" hidden>
@@ -293,6 +298,7 @@
       profile: "Perfil", experience: "Experiencia", projects: "Proyectos",
       skills: "Tecnologías", education: "Formación", languages: "Idiomas",
       certs: "Cursos y certificaciones destacados", certsMore: n => `Ver ${n} cursos y certificaciones más`,
+      certsPrintNote: "Se muestran solo los cursos y certificaciones destacados. Por el largo del documento, la lista completa está disponible en la versión web.",
       volunteer: "Otras actividades", present: "actualidad",
       months: ["ene", "feb", "mar", "abr", "may", "jun", "jul", "ago", "sep", "oct", "nov", "dic"],
       error: 'No pude cargar <code>resume.json</code>. Si abriste el archivo directo desde el disco, serví la carpeta con <code>python -m http.server</code> y entrá por <code>http://localhost:8000</code>.',
@@ -304,6 +310,7 @@
       profile: "Profile", experience: "Experience", projects: "Projects",
       skills: "Skills", education: "Education", languages: "Languages",
       certs: "Featured Courses & Certifications", certsMore: n => `Show ${n} more courses & certifications`,
+      certsPrintNote: "Only featured courses and certifications are shown. To keep the document short, the full list is available on the web version.",
       volunteer: "Other activities", present: "present",
       months: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
       error: 'Could not load <code>resume.json</code>. If you opened the file directly from disk, serve the folder with <code>python -m http.server</code> and visit <code>http://localhost:8000</code>.',
@@ -434,6 +441,7 @@
         $("certs-extra").innerHTML = rest.map(certLi).join("");
         $("certs-more-label").textContent = t.certsMore(rest.length);
         $("certs-more").hidden = false;
+        $("certs-print-note").textContent = t.certsPrintNote;
       }
       show("certs");
     }
