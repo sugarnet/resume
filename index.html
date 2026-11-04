@@ -178,6 +178,8 @@
   #error code { color: var(--accent); }
 
   /* ---------- print (Ctrl+P → PDF) ---------- */
+  /* margen 0 evita la cabecera/pie del navegador; el margen real va en .wrap */
+  @page { margin: 0; }
   @media print {
     :root {
       --paper: #fff; --card: #fff; --ink: #101B2D; --ink-soft: #47536B;
@@ -199,7 +201,7 @@
     section { margin-bottom: 18px; }
     .commit { padding-bottom: 12px; }
     .label, .contact { margin-top: 6px; }
-    .wrap { padding: 0; max-width: none; }
+    .wrap { padding: 12mm 14mm; max-width: none; box-decoration-break: clone; -webkit-box-decoration-break: clone; }
     .two-col { grid-template-columns: 1fr; gap: 0; }
     .skills { grid-template-columns: 1fr; gap: 4px; }
     .skill-card { break-inside: avoid; border: none; padding: 0; display: flex; gap: 8px; }
