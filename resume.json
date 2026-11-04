@@ -118,30 +118,27 @@
   "skills": [
     {
       "name": "Backend",
-      "keywords": ["Java", "Spring Boot", "JPA", "Hibernate", "PHP", "Zend"]
+      "keywords": ["Java", "Spring Boot", "Spring Cloud", { "es": "Microservicios", "en": "Microservices" }, "JPA / Hibernate"]
     },
     {
       "name": "Frontend",
-      "keywords": ["Angular", "TypeScript", "HTML", "CSS", "Bootstrap", "JavaScript"]
+      "keywords": ["Angular", "TypeScript", "JavaScript", "HTML / CSS"]
+    },
+    {
+      "name": { "es": "Cloud y DevOps", "en": "Cloud & DevOps" },
+      "keywords": ["AWS", "Google Cloud", "OpenShift", "Docker"]
     },
     {
       "name": { "es": "Bases de datos", "en": "Databases" },
-      "keywords": ["MySQL", "Oracle", "SQL Server", "Redis"]
-    },
-    {
-      "name": { "es": "Análisis y diseño", "en": "Analysis & Design" },
-      "keywords": ["UML", "Enterprise Architect", { "es": "Patrones GoF", "en": "GoF Patterns" }, "Scrum"]
+      "keywords": ["SQL Server", "Oracle", "MySQL", "Redis"]
     },
     {
       "name": "IA / Agentic Coding",
-      "keywords": ["Claude Code", "GitHub Copilot", "Model Context Protocol (MCP)", "Prompt Engineering"]
+      "keywords": ["Claude Code", "GitHub Copilot", "Model Context Protocol (MCP)", "Spring AI"]
     },
     {
-      "name": { "es": "Otros", "en": "Other" },
-      "keywords": [
-        { "es": "Linux (nivel medio)", "en": "Linux (intermediate)" },
-        { "es": "Android (proyectos personales)", "en": "Android (personal projects)" }
-      ]
+      "name": { "es": "Análisis y diseño", "en": "Analysis & Design" },
+      "keywords": ["UML", { "es": "Patrones GoF", "en": "GoF Patterns" }, "Scrum"]
     }
   ],
   "languages": [
