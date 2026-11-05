@@ -169,6 +169,7 @@
   .certs-more .simple { margin-top: 4px; }
 
   .print-note { display: none; }
+  .print-url { display: none; }
 
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
   @media (max-width: 640px) { .two-col { grid-template-columns: 1fr; } }
@@ -216,6 +217,7 @@
     .certs-more, .kicker { display: none; }
     .print-note { display: block; font-size: 11px; margin-top: 6px; font-style: italic; }
     .print-note:empty { display: none; }
+    .print-url { display: block; margin-top: 6px; font-size: 11px; }
   }
 </style>
 </head>
@@ -237,6 +239,7 @@
     <h1 id="name"></h1>
     <p class="label" id="label"></p>
     <div class="contact" id="contact"></div>
+    <p class="print-url"><a href="https://sugarnet.github.io/resume/">https://sugarnet.github.io/resume/</a></p>
   </header>
 
   <section id="s-summary" hidden>
