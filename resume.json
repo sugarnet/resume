@@ -152,6 +152,7 @@
     }
   ],
   "certificates": [
+    { "date": "2026-11", "name": "Building with the Claude API", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/gtmv225ns5be" },
     { "date": "2026-09", "name": "Introduction to Model Context Protocol", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/xodn3yjh2bvx" },
     { "date": "2026-09", "name": "Claude Code in Action", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/m3bcm4bra3bs" },
     { "date": "2026-09", "name": "Claude Code 101", "issuer": "Anthropic", "url": "https://verify.skilljar.com/c/n9yppoh67hm9" },
